@@ -1,0 +1,17 @@
+# Function to load all Aggressor Scripts from a specified directory
+command load_all {
+    # Directory containing the scripts
+    local $directory = script_resource("Library/");
+    
+    # Get the list of files in the directory
+    foreach $file (glob($directory + "*.cna")) {
+        # Load each script
+        load($file);
+        println("Loaded script: " + $file);
+    }
+}
+
+# Automatically run the load_all command when the script is loaded
+onready {
+    load_all();
+}
